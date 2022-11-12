@@ -109,13 +109,13 @@ install_XrayR() {
 	cd /usr/local/XrayR/
 
     if  [ $# == 0 ] ;then
-        last_version=$(curl -Ls "https://api.github.com/repos/fastincc/XrayR/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        last_version=$(curl -Ls "https://api.github.com/repos/fastincc/XrayR-1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
         if [[ ! -n "$last_version" ]]; then
             echo -e "${red}检测 XrayR 版本失败，可能是超出 Github API 限制，请稍后再试，或手动指定 XrayR 版本安装${plain}"
             exit 1
         fi
         echo -e "检测到 XrayR 最新版本：${last_version}，开始安装"
-        wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/fastincc/XrayR/releases/download/${last_version}/XrayR-linux-${arch}.zip
+        wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/fastincc/XrayR-1/releases/download/${last_version}/XrayR-linux-${arch}.zip
         if [[ $? -ne 0 ]]; then
             echo -e "${red}下载 XrayR 失败，请确保你的服务器能够下载 Github 的文件${plain}"
             exit 1
@@ -126,7 +126,7 @@ install_XrayR() {
 	else
 	    last_version="v"$1
 	fi
-        url="https://github.com/fastincc/XrayR/releases/download/${last_version}/XrayR-linux-${arch}.zip"
+        url="https://github.com/fastincc/XrayR-1/releases/download/${last_version}/XrayR-linux-${arch}.zip"
         echo -e "开始安装 XrayR ${last_version}"
         wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip ${url}
         if [[ $? -ne 0 ]]; then
@@ -162,7 +162,7 @@ install_XrayR() {
         if [[ $? == 0 ]]; then
             echo -e "${green}XrayR 重启成功${plain}"
         else
-            echo -e "${red}XrayR 可能启动失败，请稍后使用 XrayR log 查看日志信息，若无法启动，则可能更改了配置格式，请前往 wiki 查看：https://github.com/fastincc/XrayR/wiki${plain}"
+            echo -e "${red}XrayR 可能启动失败，请稍后使用 XrayR log 查看日志信息，若无法启动，则可能更改了配置格式，请前往 wiki 查看：https://github.com/fastincc/XrayR-1/wiki${plain}"
         fi
     fi
 
